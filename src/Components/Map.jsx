@@ -1,5 +1,4 @@
 import GoogleMapReact from "google-map-react";
-import { useEffect, useState } from "react";
 import { HiLocationMarker } from "react-icons/hi";
 
 const Map = ({ setcoordinates, setBounds, coordinates, values }) => {
