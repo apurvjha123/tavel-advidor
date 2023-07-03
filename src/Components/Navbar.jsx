@@ -1,18 +1,11 @@
-import React, {  useState } from "react";
+import React, { useState } from "react";
 
 import { AiOutlineDown, AiOutlineUp } from "react-icons/ai";
 
-
-import {useDispatch, useSelector} from "react-redux"
-import {fetechApi} from "../redux/slice/apiSlice"
 import Home from "./Home";
 
 const Navbar = () => {
-  const dispatch = useDispatch();
-  const state = useSelector((state)=> state)
-
-  console.log(state)
-  const [place,setPlace]= useState('restaurants')
+  const [place, setPlace] = useState("restaurants");
   const [isOpen, SetisOpen] = useState(false);
   return (
     <>
@@ -26,7 +19,7 @@ const Navbar = () => {
 
           <div>
             {/* FILTER */}
-            <button onClick={(e)=> dispatch(fetechApi())} className="bg-gray-50 border border-gray-300 hover:border-gray-900 mx-3 px-6 py-3 rounded-3xl active:bg-black duration-300">
+            <button className="bg-gray-50 border border-gray-300 hover:border-gray-900 mx-3 px-6 py-3 rounded-3xl active:bg-black duration-300">
               Filters
             </button>
 
@@ -51,31 +44,46 @@ const Navbar = () => {
               </div>
               {isOpen && (
                 <div className="absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
-                <div className="py-1">
-                  <button onClick={()=>{setPlace('restaurants')}} className="text-gray-700 block px-4 py-2 text-sm">
-                  Restaurants
-                  </button>
-                </div>
+                  <div className="py-1">
+                    <button
+                      onClick={() => {
+                        setPlace("restaurants");
+                      }}
+                      className="text-gray-700 block px-4 py-2 text-sm"
+                    >
+                      Restaurants
+                    </button>
+                  </div>
 
-                <div className="py-1">
-                  <button onClick={()=>{setPlace('hotels')}} className="text-gray-700 block px-4 py-2 text-sm">
-                    Hotels
-                  </button>
-                </div>
+                  <div className="py-1">
+                    <button
+                      onClick={() => {
+                        setPlace("hotels");
+                      }}
+                      className="text-gray-700 block px-4 py-2 text-sm"
+                    >
+                      Hotels
+                    </button>
+                  </div>
 
-                <div className="py-1">
-                  <button onClick={()=>{setPlace('attractions')}} className="text-gray-700 block px-4 py-2 text-sm">
-                    Attractions
-                  </button>
+                  <div className="py-1">
+                    <button
+                      onClick={() => {
+                        setPlace("attractions");
+                      }}
+                      className="text-gray-700 block px-4 py-2 text-sm"
+                    >
+                      Attractions
+                    </button>
+                  </div>
                 </div>
-              </div>
               )}
             </div>
           </div>
         </div>
       </div>
 
-      <Home place={place}/>
+      <Home place={place} />
     </>
   );
 };
