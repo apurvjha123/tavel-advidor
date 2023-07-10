@@ -46,9 +46,10 @@ const Navbar = () => {
                 <div className="absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
                   <div className="py-1">
                     <button
-                      onClick={() => {
-                        setPlace("restaurants");
+                      onClick={(e) => {
+                        setPlace(e.target.value);
                       }}
+                      value="restaurants"
                       className="text-gray-700 block px-4 py-2 text-sm"
                     >
                       Restaurants
@@ -57,9 +58,10 @@ const Navbar = () => {
 
                   <div className="py-1">
                     <button
-                      onClick={() => {
-                        setPlace("hotels");
+                      onClick={(e) => {
+                        setPlace(e.target.value);
                       }}
+                      value="hotels"
                       className="text-gray-700 block px-4 py-2 text-sm"
                     >
                       Hotels
@@ -68,9 +70,10 @@ const Navbar = () => {
 
                   <div className="py-1">
                     <button
-                      onClick={() => {
-                        setPlace("attractions");
+                      onClick={(e) => {
+                        setPlace(e.target.value);
                       }}
+                      value="attractions"
                       className="text-gray-700 block px-4 py-2 text-sm"
                     >
                       Attractions
