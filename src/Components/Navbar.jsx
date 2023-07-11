@@ -3,23 +3,25 @@ import React, { useState } from "react";
 import { AiOutlineDown, AiOutlineUp } from "react-icons/ai";
 
 import Home from "./Home";
+import Search from "./Search";
 
 const Navbar = () => {
   const [place, setPlace] = useState("restaurants");
   const [isOpen, SetisOpen] = useState(false);
   return (
     <>
-      <div className="p-5">
-        <div className="flex justify-between">
+      <div className="pt-4 px-4 ">
+        <div className="flex justify-between border-b border-gray-300">
           {/* DATE */}
           <input
             type="date"
-            className="bg-gray-50 mb-5 border border-gray-300 text-gray-900 text-sm rounded-full py-3 px-5"
+            className="bg-gray-50 mb-3 mt-1 border border-gray-300 text-gray-900 text-sm rounded-full py-2 px-5"
           />
-
+          {/* Search */}
+          <Search/>
           <div>
             {/* FILTER */}
-            <button className="bg-gray-50 border border-gray-300 hover:border-gray-900 mx-3 px-6 py-3 rounded-3xl active:bg-black duration-300">
+            <button className="font-semibold font-sans border border-gray-300 hover:border-gray-900 mx-3 px-6 py-2 rounded-3xl active:bg-black duration-300">
               Filters
             </button>
 
@@ -28,15 +30,17 @@ const Navbar = () => {
               <div>
                 <button
                   type="button"
-                  className="inline-flex w-full justify-center gap-x-1.5 rounded-full bg-gray-50 px-4 py-3 text-sm font-semibold hover:border active:bg-black duration-300 border-gray-900 shadow-sm hover:bg-gray-50"
+                  className="inline-flex w-full justify-center gap-x-1.5 rounded-full px-4 py-2 text-sm font-semibold border-2 border-gray-700 active:bg-black duration-300 shadow-sm hover:bg-gray-50"
                 >
                   <button onClick={() => SetisOpen((prev) => !prev)}>
-                    <div className="flex justify-between">
+                    <div className="flex justify-start">
+                      <div className="font-serif text-md">
                       {place}
+                      </div>
                       {isOpen ? (
-                        <AiOutlineUp className="pt-2 font-extrabold" />
+                        <AiOutlineUp className="pt-1 text-lg" />
                       ) : (
-                        <AiOutlineDown className="pt-2 font-extrabold" />
+                        <AiOutlineDown className="pt-1 text-lg" />
                       )}
                     </div>
                   </button>
@@ -48,6 +52,7 @@ const Navbar = () => {
                     <button
                       onClick={(e) => {
                         setPlace(e.target.value);
+                        SetisOpen((prev) => !prev);
                       }}
                       value="restaurants"
                       className="text-gray-700 block px-4 py-2 text-sm"
@@ -60,6 +65,7 @@ const Navbar = () => {
                     <button
                       onClick={(e) => {
                         setPlace(e.target.value);
+                        SetisOpen((prev) => !prev);
                       }}
                       value="hotels"
                       className="text-gray-700 block px-4 py-2 text-sm"
@@ -72,6 +78,7 @@ const Navbar = () => {
                     <button
                       onClick={(e) => {
                         setPlace(e.target.value);
+                        SetisOpen((prev) => !prev);
                       }}
                       value="attractions"
                       className="text-gray-700 block px-4 py-2 text-sm"

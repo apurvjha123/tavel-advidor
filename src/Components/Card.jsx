@@ -1,28 +1,39 @@
 import React from "react";
-import { AiFillStar } from "react-icons/ai";
-import { PiDotOutlineBold } from "react-icons/pi";
+import { BsCircleHalf } from "react-icons/bs";
 import { HiLocationMarker } from "react-icons/hi";
 import { AiOutlineLink } from "react-icons/ai";
+import { AiOutlineHeart } from "react-icons/ai";
+import Carousel from "./Carousel";
 
-const Card = ({ value, imageUrl }) => {
-  const { name, rating, num_reviews, ranking, address, website } = value;
+// const slider = [
+//   "https://media-cdn.tripadvisor.com/media/photo-s/18/3b/9e/f4/takht-sri-harmandir-sahib.jpg",
+//   "https://media-cdn.tripadvisor.com/media/photo-f/18/3b/9e/f4/takht-sri-harmandir-sahib.jpg",
+//   "https://media-cdn.tripadvisor.com/media/photo-o/18/3b/9e/f4/takht-sri-harmandir-sahib.jpg",
+//   "https://media-cdn.tripadvisor.com/media/photo-l/18/3b/9e/f4/takht-sri-harmandir-sahib.jpg",
+//   "https://media-cdn.tripadvisor.com/media/photo-t/18/3b/9e/f4/takht-sri-harmandir-sahib.jpg",
+// ];
+const Card = ({ value , index}) => {
+  const { name, rating,  ranking, address, website,photo } = value;
+  const val = Object.values(photo?.images || {}).map(size => size.url)
   return (
     <>
       <div className="flex border-b-2 border-gray-200">
-        <div className="w-1/2">
-          <img
-            src={imageUrl}
-            alt="Card"
-            className="p-2 h-44 w-full rounded-2xl overflow-hidden object-cover"
-          />
+        <div className="max-w-lg max-h-64 m-2">
+          <Carousel>
+            {val && val.map((s) => (
+              <>
+              <img src={s} alt="Cards" />
+              <div className="absolute top-4 right-4 w-6 h-6 p-4 rounded-full bg-white" ><AiOutlineHeart className="absolute -mt-2 -ml-2 font-bold text-lg"/></div>
+            </>
+            ))}
+          </Carousel>
         </div>
         <div className="w-1/2 p-2">
-          <h2 className="text-xl font-bold mb-2">{name}</h2>
-          <p className="text-gray-700 flex ">
-            <AiFillStar className="text-yellow-500 m-1" />{" "}
-            <div className="font-extrabold flex">
-              {rating} <PiDotOutlineBold className="m-1" /> {num_reviews}{" "}
-              reveiws
+          <h2 className="text-xl font-bold mb-2">{index+1+"."+ name}</h2>
+          <p className="text-gray-700 flex gap-2 ">
+            <div className="flex"> <BsCircleHalf className="text-green-700 bg-green-700 rounded-full"/><BsCircleHalf className="text-green-700 bg-green-700 rounded-full"/><BsCircleHalf className="text-green-700 bg-green-700 rounded-full"/><BsCircleHalf className="text-green-700 bg-green-700 rounded-full"/><BsCircleHalf className="text-green-700 rounded-full"/></div>
+            <div className="justify-center -mt-1 font-bold">
+            {rating}
             </div>
           </p>
           <div className="flex truncate">{ranking}</div>

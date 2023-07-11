@@ -37,7 +37,7 @@ const Home = ({ place }) => {
           {/*Content*/}
           <div className="md:w-4/12 h-screen overflow-y-scroll scrollbar-hide">
             {/* distance */}
-            <div className="bg-green-100 px-4 pt-2 pb-1 md:w-1/3 w-2/3 ml-3">
+            <div className="bg-green-100 mt-2 px-4 pt-2 pb-1 md:w-1/3 w-2/3 ml-4">
               <div className="flex justify-between">
                 <div className="">Distance</div>
                 <div>{6 - progress} KM</div>
@@ -61,8 +61,8 @@ const Home = ({ place }) => {
               </div>
             </div>
 
-            <div className="flex justify-start ml-3">
-              377 place sorted by traveler favorites <BsExclamationCircle className="mx-2 my-1"/>
+            <div className="flex justify-start ml-4">
+              {Data?.length || 377} places sorted by traveler favorites <BsExclamationCircle className="mx-2 my-1"/>
             </div>
             <div className="m-3">
               {/* card */}
@@ -71,7 +71,7 @@ const Home = ({ place }) => {
                   <Card
                     index={index}
                     value={value}
-                    imageUrl={value.photo && value.photo.images.original.url}
+                    
                   />
                 ))
               ) : (
@@ -81,7 +81,7 @@ const Home = ({ place }) => {
           </div>
           {/* map */}
           <div className="md:w-8/12 grid grid-rows-2 h-screen">
-            <div className="m-3">
+            <div className="m-3 mt-0">
               <Map
                 setcoordinates={setcoordinates}
                 setBounds={setBounds}

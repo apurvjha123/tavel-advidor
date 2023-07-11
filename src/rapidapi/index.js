@@ -13,7 +13,7 @@ export const data = async (place, bounds) => {
         tr_longitude: bounds.ne.lng,
       },
       headers: {
-        "X-RapidAPI-Key": "eced852888mshf17ffa1c475b2cdp1c96dajsnf7aa636ec19e",
+        "X-RapidAPI-Key": process.env.REACT_APP_TRAVEL_ADVISOR,
         "X-RapidAPI-Host": "travel-advisor.p.rapidapi.com",
       },
     };
