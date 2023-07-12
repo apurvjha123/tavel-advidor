@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState , createRef} from "react";
 import Map from "./Map";
 import { data } from "../rapidapi";
 import Card from "./Card";
@@ -12,6 +12,8 @@ const Home = ({ place }) => {
   const [bounds, setBounds] = useState(null);
   const [ChildClicked, setChildClicked] = useState();
   const [isLoading, setIsLoading] = useState(false)
+  const [elRef, setelRef] = useState([])
+  const [progress, setProgress] = useState(null);
 
   useEffect(() => {
     navigator.geolocation.getCurrentPosition(
@@ -20,7 +22,6 @@ const Home = ({ place }) => {
       }
     );
   }, []);
-  const [progress, setProgress] = useState(null);
 
   useEffect(() => {
     setIsLoading(true)
@@ -34,7 +35,11 @@ const Home = ({ place }) => {
     setProgress(event.target.value);
   };
   console.log(Data);
-  console.log({ChildClicked})
+  
+  useEffect(() => {
+    setelRef((refs) => Array(Data?.length).fill().map((_, i) => refs[i] || createRef()));
+  }, [Data])
+  
 
   return (
     <>
@@ -74,12 +79,15 @@ const Home = ({ place }) => {
             <div className="m-3">
             {/* card */}
             {Data && (
-              Data.map((value, index) => (
-                <Card
-                  index={index}
+              Data.map((value, i) => (
+                <div ref={elRef[i]} key={i}>
+                  <Card
+                  index={i}
                   value={value}
-                  
+                  selected={Number(ChildClicked)=== i}
+                  refProp={elRef[i]}
                 />
+                </div>
               ))
             )}
           </div>}

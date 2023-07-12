@@ -5,16 +5,10 @@ import { AiOutlineLink } from "react-icons/ai";
 import { AiOutlineHeart } from "react-icons/ai";
 import Carousel from "./Carousel";
 
-// const slider = [
-//   "https://media-cdn.tripadvisor.com/media/photo-s/18/3b/9e/f4/takht-sri-harmandir-sahib.jpg",
-//   "https://media-cdn.tripadvisor.com/media/photo-f/18/3b/9e/f4/takht-sri-harmandir-sahib.jpg",
-//   "https://media-cdn.tripadvisor.com/media/photo-o/18/3b/9e/f4/takht-sri-harmandir-sahib.jpg",
-//   "https://media-cdn.tripadvisor.com/media/photo-l/18/3b/9e/f4/takht-sri-harmandir-sahib.jpg",
-//   "https://media-cdn.tripadvisor.com/media/photo-t/18/3b/9e/f4/takht-sri-harmandir-sahib.jpg",
-// ];
-const Card = ({ value , index}) => {
+const Card = ({ value , index, selected, refProp}) => {
   const { name, rating,  ranking, address, website,photo } = value;
   const val = Object.values(photo?.images || {}).map(size => size.url)
+  if (selected) refProp?.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
   return (
     <>
       <div className="flex border-b-2 border-gray-200">

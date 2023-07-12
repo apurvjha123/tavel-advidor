@@ -1,5 +1,6 @@
 import GoogleMap from "google-map-react";
 import { HiLocationMarker } from "react-icons/hi";
+import {mapStyles} from '../mapStyles'
 
 const Map = ({ setcoordinates, setBounds, coordinates, values, progress , setChildClicked}) => {
   
@@ -16,16 +17,16 @@ const Map = ({ setcoordinates, setBounds, coordinates, values, progress , setChi
             setBounds({ ne: e.marginBounds.ne, sw: e.marginBounds.sw });
           }}
           onChildClick={child => setChildClicked(child)}
+          options={{disableDefaultUI:false,zoomControl:true,styles:mapStyles}}
         >
           {values &&
             values.map((value) => (
               <HiLocationMarker
-              className="text-2xl text-green-950"
-              lat={Number(value.latitude) || 25.61445}
-                lng={Number(value.longitude) || 85.14384}
+              className="text-2xl text-green-600"
+              lat={Number(value.latitude)}
+                lng={Number(value.longitude)}
             />
             ))}
-            
         </GoogleMap>
       </div>
     </>
