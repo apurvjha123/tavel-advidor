@@ -1,11 +1,12 @@
-import GoogleMapReact from "google-map-react";
+import GoogleMap from "google-map-react";
 import { HiLocationMarker } from "react-icons/hi";
 
-const Map = ({ setcoordinates, setBounds, coordinates, values, progress }) => {
+const Map = ({ setcoordinates, setBounds, coordinates, values, progress , setChildClicked}) => {
+  
   return (
     <>
       <div className="h-screen w-full">
-        <GoogleMapReact
+        <GoogleMap
           defaultCenter={coordinates}
           center={coordinates}
           zoom={progress*5}
@@ -14,22 +15,18 @@ const Map = ({ setcoordinates, setBounds, coordinates, values, progress }) => {
             setcoordinates({ lat: e.center.lat, lng: e.center.lng });
             setBounds({ ne: e.marginBounds.ne, sw: e.marginBounds.sw });
           }}
+          onChildClick={child => setChildClicked(child)}
         >
           {values &&
             values.map((value) => (
               <HiLocationMarker
-              className="text-2xl text-green-700"
+              className="text-2xl text-green-950"
               lat={Number(value.latitude) || 25.61445}
                 lng={Number(value.longitude) || 85.14384}
             />
             ))}
-            {/* <HiLocationMarker
-              className="text-2xl text-red-700"
-              lat={parseFloat(25.61445)}
-              lng={parseFloat(85.14384)}
-            /> */}
             
-        </GoogleMapReact>
+        </GoogleMap>
       </div>
     </>
   );

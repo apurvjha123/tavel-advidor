@@ -31,7 +31,7 @@ const Card = ({ value , index}) => {
         <div className="w-1/2 p-2">
           <h2 className="text-xl font-bold mb-2">{index+1+"."+ name}</h2>
           <p className="text-gray-700 flex gap-2 ">
-            <div className="flex"> <BsCircleHalf className="text-green-700 bg-green-700 rounded-full"/><BsCircleHalf className="text-green-700 bg-green-700 rounded-full"/><BsCircleHalf className="text-green-700 bg-green-700 rounded-full"/><BsCircleHalf className="text-green-700 bg-green-700 rounded-full"/><BsCircleHalf className="text-green-700 rounded-full"/></div>
+            <div className="flex"> <BsCircleHalf className="text-green-400 bg-green-400 rounded-full"/><BsCircleHalf className="text-green-400 bg-green-400 rounded-full"/><BsCircleHalf className="text-green-400 bg-green-400 rounded-full"/><BsCircleHalf className="text-green-400 bg-green-400 rounded-full"/><BsCircleHalf className="text-green-400 rounded-full"/></div>
             <div className="justify-center -mt-1 font-bold">
             {rating}
             </div>

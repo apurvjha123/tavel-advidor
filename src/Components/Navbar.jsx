@@ -30,11 +30,11 @@ const Navbar = () => {
               <div>
                 <button
                   type="button"
-                  className="inline-flex w-full justify-center gap-x-1.5 rounded-full px-4 py-2 text-sm font-semibold border-2 border-gray-700 active:bg-black duration-300 shadow-sm hover:bg-gray-50"
+                  className="inline-flex w-full justify-center gap-x-1.5 rounded-full px-4 py-2 text-sm font-semibold border-2 hover:border-gray-700 active:bg-black duration-300 shadow-sm hover:bg-gray-50"
                 >
                   <button onClick={() => SetisOpen((prev) => !prev)}>
                     <div className="flex justify-start">
-                      <div className="font-serif text-md">
+                      <div className="font-sans font-semibold text-md first-letter:capitalize">
                       {place}
                       </div>
                       {isOpen ? (
